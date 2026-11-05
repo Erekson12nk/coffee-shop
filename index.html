@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Зерно — обжарочная мастерская</title>
+  <meta name="description" content="Зерно — концепт интернет-магазина обжарочной мастерской: свежеобжаренный кофе в зёрнах и дрип-пакеты.">
+  <meta name="theme-color" content="#2a1c15">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='32' cy='32' rx='20' ry='27' transform='rotate(-30 32 32)' fill='%238f4a1e'/%3E%3Cpath d='M22 12 C38 24 26 40 42 52' stroke='%23f7f1e8' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Перейти к каталогу</a>
+
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="Зерно — на главную">
+        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <ellipse cx="20" cy="20" rx="12" ry="17" transform="rotate(-30 20 20)" fill="currentColor"/>
+          <path d="M13.5 7.5 C24 15 16 25 26.5 32.5" stroke="var(--bg)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="logo__text">Зерно<small>обжарочная мастерская</small></span>
+      </a>
+
+      <nav class="nav" aria-label="Основное меню">
+        <a href="#catalog">Каталог</a>
+        <a href="#about">О мастерской</a>
+        <a href="#delivery">Доставка</a>
+      </nav>
+
+      <form class="search" role="search" id="searchForm">
+        <label for="searchInput" class="visually-hidden">Поиск по каталогу</label>
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="searchInput" placeholder="Страна, вкус или название" autocomplete="off">
+        <button type="button" class="search__clear" id="searchClear" aria-label="Очистить поиск" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </form>
+
+      <button class="cart-btn" id="cartOpen" type="button" aria-haspopup="dialog" aria-controls="cartDrawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 10V7a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="visually-hidden" id="cartBtnLabel">Корзина, товаров: 0</span>
+        <span class="cart-btn__count" id="cartCount" aria-hidden="true">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Первый экран -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Обжарка по вторникам и пятницам</p>
+          <h1 class="hero__title">Кофе, который обжарили <em>на этой неделе</em></h1>
+          <p class="hero__lead">Привозим зелёное зерно с небольших ферм, обжариваем малыми партиями и отправляем в течение трёх дней. Чтобы дома было вкусно, как в любимой кофейне.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#catalog">Выбрать кофе</a>
+            <button class="btn btn--ghost" type="button" data-quick-category="drip">Дрип-пакеты</button>
+          </div>
+          <ul class="hero__facts">
+            <li><strong>12</strong><span>сортов и смесей</span></li>
+            <li><strong>3 дня</strong><span>от обжарки до отправки</span></li>
+            <li><strong>от 3000 ₽</strong><span>доставка бесплатно</span></li>
+          </ul>
+        </div>
+        <div class="hero__visual" id="heroVisual" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="perks" aria-label="Почему Зерно">
+      <div class="container perks__grid">
+        <div class="perk">
+          <span class="perk__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 2-6 5-10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <div><h3>Свежая обжарка</h3><p>Дата обжарки — на каждой пачке</p></div>
+        </div>
+        <div class="perk">
+          <span class="perk__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h3l2-6 4 12 2-6h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><h3>Профиль под способ</h3><p>Отдельно для эспрессо и фильтра</p></div>
+        </div>
+        <div class="perk">
+          <span class="perk__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="1.8" fill="var(--surface)" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17.5" r="1.8" fill="var(--surface)" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <div><h3>Бережная доставка</h3><p>Курьером, в пункт выдачи или самовывоз</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Каталог -->
+    <section class="catalog" id="catalog" aria-labelledby="catalogTitle">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Магазин</p>
+            <h2 class="section-title" id="catalogTitle">Каталог кофе</h2>
+          </div>
+          <div class="catalog__tools">
+            <button class="btn btn--small btn--outline filters-toggle" id="filtersToggle" type="button" aria-expanded="false" aria-controls="filters">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Фильтры <span class="filters-toggle__badge" id="filtersBadge" hidden></span>
+            </button>
+            <label class="sort">
+              <span class="visually-hidden">Сортировка</span>
+              <select id="sortSelect">
+                <option value="popular">Сначала популярные</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="catalog__layout">
+          <aside class="filters" id="filters" aria-label="Фильтры каталога">
+            <fieldset class="filter-group">
+              <legend>Категория</legend>
+              <div class="chips" id="categoryChips">
+                <label class="chip"><input type="radio" name="category" value="all" checked><span>Все</span></label>
+                <label class="chip"><input type="radio" name="category" value="espresso"><span>Для эспрессо</span></label>
+                <label class="chip"><input type="radio" name="category" value="filter"><span>Для фильтра</span></label>
+                <label class="chip"><input type="radio" name="category" value="drip"><span>Дрип-пакеты</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend>Степень обжарки</legend>
+              <div class="checks" id="roastChecks">
+                <label class="check"><input type="checkbox" name="roast" value="light"><span class="check__box" aria-hidden="true"></span><span class="roast-dots" data-level="1" aria-hidden="true"><i></i><i></i><i></i></span>Светлая</label>
+                <label class="check"><input type="checkbox" name="roast" value="medium"><span class="check__box" aria-hidden="true"></span><span class="roast-dots" data-level="2" aria-hidden="true"><i></i><i></i><i></i></span>Средняя</label>
+                <label class="check"><input type="checkbox" name="roast" value="dark"><span class="check__box" aria-hidden="true"></span><span class="roast-dots" data-level="3" aria-hidden="true"><i></i><i></i><i></i></span>Тёмная</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend>Цена за минимальную фасовку, ₽</legend>
+              <div class="price-range">
+                <label>
+                  <span>от</span>
+                  <input type="number" id="priceMin" inputmode="numeric" min="0" step="10">
+                </label>
+                <span class="price-range__dash" aria-hidden="true">—</span>
+                <label>
+                  <span>до</span>
+                  <input type="number" id="priceMax" inputmode="numeric" min="0" step="10">
+                </label>
+              </div>
+              <label class="visually-hidden" for="priceSlider">Максимальная цена</label>
+              <input type="range" id="priceSlider" class="range" step="10">
+              <p class="price-range__hint" id="priceHint"></p>
+            </fieldset>
+
+            <button class="btn btn--small btn--ghost filters__reset" id="filtersReset" type="button">Сбросить фильтры</button>
+          </aside>
+
+          <div class="catalog__results">
+            <p class="results-count" id="resultsCount" aria-live="polite"></p>
+            <ul class="grid" id="productGrid"></ul>
+            <div class="empty" id="catalogEmpty" hidden>
+              <div class="empty__art" aria-hidden="true">
+                <svg viewBox="0 0 120 100"><path d="M20 40h70v18a30 30 0 0 1-30 30h-10a30 30 0 0 1-30-30Z" fill="var(--cream)" stroke="var(--ink-2)" stroke-width="3"/><path d="M90 46h6a10 10 0 0 1 0 20h-8" fill="none" stroke="var(--ink-2)" stroke-width="3"/><path d="M42 30c-4-6 4-10 0-16M56 30c-4-6 4-10 0-16M70 30c-4-6 4-10 0-16" fill="none" stroke="var(--muted)" stroke-width="3" stroke-linecap="round"/></svg>
+              </div>
+              <h3>Ничего не нашлось</h3>
+              <p>Попробуйте изменить запрос или ослабить фильтры — у нас точно есть что-то подходящее.</p>
+              <button class="btn btn--primary btn--small" type="button" id="emptyReset">Показать весь каталог</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О мастерской -->
+    <section class="about" id="about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <p class="eyebrow">Как мы работаем</p>
+          <h2 class="section-title" id="aboutTitle">От фермы до вашей чашки</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num">01</span>
+            <h3>Отбор</h3>
+            <p>Каппингуем десятки образцов и берём только те лоты, которые нравятся всей команде. Работаем с импортёрами, которые знают фермеров лично.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">02</span>
+            <h3>Обжарка</h3>
+            <p>Обжариваем на барабанном ростере малыми партиями по 5–10 кг. Для каждого сорта подбираем свой профиль и проверяем результат дегустацией.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">03</span>
+            <h3>Отправка</h3>
+            <p>Фасуем в пакеты с дегазационным клапаном и отправляем в течение трёх дней после обжарки, пока кофе на пике вкуса.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Доставка -->
+    <section class="delivery" id="delivery" aria-labelledby="deliveryTitle">
+      <div class="container delivery__inner">
+        <div>
+          <p class="eyebrow">Доставка и оплата</p>
+          <h2 class="section-title" id="deliveryTitle">Привезём, пока кофе свежий</h2>
+          <p class="delivery__lead">Заказ от 3000 ₽ доставляем бесплатно. Для меньших заказов стоимость доставки — 350 ₽, самовывоз из мастерской всегда бесплатный.</p>
+        </div>
+        <dl class="delivery__list">
+          <div><dt>Курьер</dt><dd>1–2 дня по городу, удобный интервал</dd></div>
+          <div><dt>Пункт выдачи</dt><dd>2–5 дней, более 3000 пунктов по стране</dd></div>
+          <div><dt>Самовывоз</dt><dd>Из мастерской в день обжарки, после 16:00</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="logo logo--light" href="#top" aria-label="Зерно — наверх">
+          <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <ellipse cx="20" cy="20" rx="12" ry="17" transform="rotate(-30 20 20)" fill="currentColor"/>
+            <path d="M13.5 7.5 C24 15 16 25 26.5 32.5" stroke="var(--ink)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span class="logo__text">Зерно<small>обжарочная мастерская</small></span>
+        </a>
+        <p>Кофе в зёрнах и дрип-пакеты свежей обжарки.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Навигация в подвале">
+        <h3>Магазин</h3>
+        <a href="#catalog">Каталог</a>
+        <button type="button" class="link-btn" data-quick-category="espresso">Для эспрессо</button>
+        <button type="button" class="link-btn" data-quick-category="filter">Для фильтра</button>
+        <button type="button" class="link-btn" data-quick-category="drip">Дрип-пакеты</button>
+      </nav>
+      <div class="footer__nav">
+        <h3>Покупателям</h3>
+        <a href="#about">О мастерской</a>
+        <a href="#delivery">Доставка и оплата</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p class="footer__disclaimer">Концепт-проект. Магазин вымышлен, заказы не принимаются.</p>
+      <p>© <span id="year">2026</span> «Зерно»</p>
+    </div>
+  </footer>
+
+  <!-- Подложка для модальных окон и корзины -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <!-- Карточка товара -->
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle" hidden>
+    <div class="modal__panel modal__panel--product">
+      <button class="icon-btn modal__close" type="button" data-close aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="pm" id="pmContent"></div>
+    </div>
+  </div>
+
+  <!-- Корзина -->
+  <aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
+    <div class="drawer__head">
+      <h2 id="cartTitle">Корзина</h2>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть корзину">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="shipping" id="shipping">
+      <p class="shipping__text" id="shippingText"></p>
+      <div class="progress" role="progressbar" aria-labelledby="shippingText" aria-valuemin="0" aria-valuemax="3000" id="shippingBar"><span id="shippingFill"></span></div>
+    </div>
+    <ul class="cart-list" id="cartList"></ul>
+    <div class="empty empty--cart" id="cartEmpty" hidden>
+      <div class="empty__art" aria-hidden="true">
+        <svg viewBox="0 0 120 110"><path d="M30 34h60l-5 60a6 6 0 0 1-6 6H41a6 6 0 0 1-6-6Z" fill="var(--cream)" stroke="var(--ink-2)" stroke-width="3" stroke-linejoin="round"/><path d="M46 42V30a14 14 0 0 1 28 0v12" fill="none" stroke="var(--ink-2)" stroke-width="3" stroke-linecap="round"/><ellipse cx="60" cy="68" rx="8" ry="11" transform="rotate(-30 60 68)" fill="var(--accent)"/></svg>
+      </div>
+      <h3>В корзине пока пусто</h3>
+      <p>Загляните в каталог — подскажем по вкусу и способу заваривания.</p>
+      <button class="btn btn--primary btn--small" type="button" id="cartEmptyBtn">Перейти в каталог</button>
+    </div>
+    <div class="drawer__foot" id="cartFoot">
+      <div class="summary-row"><span>Товары</span><span id="cartSubtotal">0 ₽</span></div>
+      <div class="summary-row summary-row--muted"><span>Доставка</span><span id="cartDelivery">—</span></div>
+      <button class="btn btn--primary btn--block" type="button" id="checkoutOpen">Оформить заказ</button>
+      <button class="btn btn--ghost btn--block btn--small" type="button" id="cartClear">Очистить корзину</button>
+    </div>
+  </aside>
+
+  <!-- Оформление заказа -->
+  <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="coTitle" hidden>
+    <div class="modal__panel modal__panel--checkout">
+      <button class="icon-btn modal__close" type="button" data-close aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="checkout" id="checkoutFormView">
+        <h2 class="checkout__title" id="coTitle">Оформление заказа</h2>
+        <p class="checkout__note">Это демонстрационная форма: данные никуда не отправляются.</p>
+
+        <form id="checkoutForm" novalidate>
+          <div class="field">
+            <label for="coName">Имя и фамилия</label>
+            <input id="coName" name="name" type="text" autocomplete="name" placeholder="Анна Смирнова" aria-describedby="coNameErr" required>
+            <p class="field__error" id="coNameErr"></p>
+          </div>
+          <div class="field">
+            <label for="coPhone">Телефон</label>
+            <input id="coPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" aria-describedby="coPhoneErr" required>
+            <p class="field__error" id="coPhoneErr"></p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Способ получения</legend>
+            <div class="delivery-options">
+              <label class="option">
+                <input type="radio" name="delivery" value="courier" checked>
+                <span class="option__body"><strong>Курьер</strong><small>1–2 дня · 350 ₽, от 3000 ₽ бесплатно</small></span>
+              </label>
+              <label class="option">
+                <input type="radio" name="delivery" value="point">
+                <span class="option__body"><strong>Пункт выдачи</strong><small>2–5 дней · 350 ₽, от 3000 ₽ бесплатно</small></span>
+              </label>
+              <label class="option">
+                <input type="radio" name="delivery" value="pickup">
+                <span class="option__body"><strong>Самовывоз</strong><small>Из мастерской · бесплатно</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="field" id="addressField">
+            <label for="coAddress" id="coAddressLabel">Адрес доставки</label>
+            <input id="coAddress" name="address" type="text" autocomplete="street-address" placeholder="Город, улица, дом, квартира" aria-describedby="coAddressErr" required>
+            <p class="field__error" id="coAddressErr"></p>
+          </div>
+          <p class="pickup-info" id="pickupInfo" hidden>Мастерская работает по будням с 10:00 до 19:00. Когда заказ будет готов, пришлём сообщение.</p>
+
+          <div class="checkout__summary">
+            <div class="summary-row"><span>Товары</span><span id="coSubtotal">0 ₽</span></div>
+            <div class="summary-row"><span>Доставка</span><span id="coDelivery">0 ₽</span></div>
+            <div class="summary-row summary-row--total"><span>Итого</span><span id="coTotal">0 ₽</span></div>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit">Подтвердить заказ</button>
+        </form>
+      </div>
+
+      <div class="success" id="checkoutSuccess" hidden tabindex="-1" aria-labelledby="successTitle">
+        <div class="success__icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="3"/><path class="success__check" d="M19 33l9 9 17-19" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 id="successTitle">Спасибо, заказ оформлен!</h2>
+        <p id="successText"></p>
+        <p class="success__demo">Это концепт-проект: заказ не отправлен и не будет обработан.</p>
+        <button class="btn btn--primary" type="button" id="successClose">Вернуться в магазин</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Уведомления -->
+  <div class="toast-zone" id="toastZone" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
